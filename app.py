@@ -28,7 +28,7 @@ print(f"Whisper will attempt to use device: {device} with compute type: {compute
 # Whisper Model Initialization
 whisper_model_instance = None # Initialize to None
 try:
-    whisper_model_instance = WhisperModel("base", device=device, compute_type=compute_type) #You can change "medium" to "large-v3" or any other model you have downloaded.
+    whisper_model_instance = WhisperModel("tiny", device=device, compute_type=compute_type) #You can change "medium" to "large-v3" or any other model you have downloaded.
 except Exception as e:
     print(f"Error loading Whisper model: {str(e)}")
     print("Whisper transcription will not be available.")
@@ -79,7 +79,7 @@ def transcribe_audio():
         print(f"Saving temporary audio file to: {temp_audio_path}")
         audio_file.save(temp_audio_path)
 
-        segments, info = whisper_model_instance.transcribe(temp_audio_path, beam_size=5) # Add the language parameter if needed, e.g., language="en"
+        segments, info = whisper_model_instance.transcribe(temp_audio_path, beam_size=1) # Add the language parameter if needed, e.g., language="en"
         
         # segments = ["Dummy Text"]
         
